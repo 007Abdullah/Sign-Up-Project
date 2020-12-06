@@ -24,8 +24,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form"
-                            action="#">
+                        <form method="POST" class="register-form" id="register-form" action="#">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name" required />
@@ -51,8 +50,8 @@
                                     statements in <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <a href="index.html"><input type="submit" name="signup" id="signup"  onclick="DataStore()" class="form-submit"
-                                        value="Register" /></a>
+                                <a href="index.html"><input type="submit" name="signup" id="signup"
+                                        onclick="DataStore()" class="form-submit" value="Register" /></a>
                             </div>
                         </form>
                     </div>
@@ -75,20 +74,23 @@
     let pass = "";
     function DataStore() {
         let name = document.getElementById("name").value;
+        name = name.toLowerCase();
         localStorage.setItem("name", name);
         email = document.getElementById("email").value;
+        email = email.toLowerCase();
         localStorage.setItem("email", email);
         pass = document.getElementById("pass").value;
+        pass = pass.toLowerCase();
         localStorage.setItem("Password", pass);
         male = document.getElementById("male").checked;
-        localStorage.setItem("male",male);
+        localStorage.setItem("male", male);
         female = document.getElementById("female").checked;
-        localStorage.setItem("female",female);
+        localStorage.setItem("female", female);
         if (male === true) {
             arr.push("Name :" + name, "Email :" + email, "Password :" + pass, "Male :" + male);
         }
-        else{
-            arr.push("Name :" + name, "Email :" + email, "Password :" + pass, "Female :" + female); 
+        else {
+            arr.push("Name :" + name, "Email :" + email, "Password :" + pass, "Female :" + female);
         }
         console.log(arr);
     }

@@ -46,9 +46,12 @@
                     <div class="social-login">
                         <span class="social-label">Or login with</span>
                         <ul class="socials">
-                            <li><a href="https://www.facebook.com"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
-                            <li><a href="https://www.twitter.com"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-                            <li><a href="https://www.google.com"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            <li><a href="https://www.facebook.com"><i
+                                        class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                            <li><a href="https://www.twitter.com"><i
+                                        class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                            <li><a href="https://www.google.com"><i
+                                        class="display-flex-center zmdi zmdi-google"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -66,14 +69,18 @@
 
     function login() {
         let email = localStorage.getItem("email");
+        email = email.toLowerCase();
         let password = localStorage.getItem("Password");
+        password = password.toLowerCase();
 
         let Username = document.getElementById("email").value;
+        Username = Username.toLowerCase();
         let Password = document.getElementById("password").value;
+        Password = Password.toLowerCase();
         if ((email === Username) && (Password === password)) {
             window.open("home.html");
         }
-        else if ((email !== Username) &&  (password !== Password) ) {
+        else if ((email !== Username) && (password !== Password)) {
             alert("Please Create Account");
         }
         else {
