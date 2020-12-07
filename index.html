@@ -25,7 +25,7 @@
 
                 <div class="signin-form">
                     <h2 class="form-title">Login</h2>
-                    <form method="POST" class="register-form" id="login-form" onsubmit="login()" action="#">
+                    <form method="POST" class="register-form" id="login-form" onsubmit="return login()">
                         <div class="form-group">
                             <label for="your_name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                             <input type="email" name="your_email" id="email" placeholder="Your Email" required />
@@ -66,17 +66,46 @@
 
 </body>
 <script>
+    let Username = [];
+    let Password = [];
+
+    let isFound = false;
 
     function login() {
-        let email = localStorage.getItem("email");
+
+        let email = JSON.parse(localStorage.getItem("email"));
         email = email.toLowerCase();
-        let password = localStorage.getItem("Password");
+        let password = JSON.parse(localStorage.getItem("Password"));
         password = password.toLowerCase();
 
-        let Username = document.getElementById("email").value;
+
+        Username = document.getElementById("email").value;
         Username = Username.toLowerCase();
-        let Password = document.getElementById("password").value;
+        Password = document.getElementById("password").value;
         Password = Password.toLowerCase();
+
+        console.log(Username, email);
+        console.log(Password, password);
+
+        // for (i = 0; i < email.length; i++) {
+        //     if (Username === email[i]) {
+        //         isFound = true;
+        //         break;
+        //     }
+        //     else if(isFound) {
+        //     alert("Invalid account Please Create ");
+        // }
+        // }
+        
+
+    //    if (Username === email && Password === password) {
+    //         window.location.href = "home.html";
+    //     }
+    //     else{
+    //         alert("Create an Account")
+    //     }
+
+
         if ((email === Username) && (Password === password)) {
             window.open("home.html");
         }
@@ -86,8 +115,7 @@
         else {
             alert("Invalid Email Password");
         }
-
-
+        return false;
     }
 
 

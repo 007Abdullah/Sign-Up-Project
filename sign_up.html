@@ -24,7 +24,7 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        <form method="POST" class="register-form" id="register-form" action="#">
+                        <form class="register-form" id="register-form" onsubmit="return DataStore()">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="name" id="name" placeholder="Your Name" required />
@@ -50,8 +50,8 @@
                                     statements in <a href="#" class="term-service">Terms of service</a></label>
                             </div>
                             <div class="form-group form-button">
-                                <a href="index.html"><input type="submit" name="signup" id="signup"
-                                        onclick="DataStore()" class="form-submit" value="Register" /></a>
+                                <a href="index.html"><input type="submit" name="signup" id="signup" class="form-submit"
+                                        value="Register" /></a>
                             </div>
                         </form>
                     </div>
@@ -70,18 +70,18 @@
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 <script>
     let arr = [];
-    let email = "";
-    let pass = "";
+    let email = [];
+    let pass = [];
     function DataStore() {
         let name = document.getElementById("name").value;
         name = name.toLowerCase();
         localStorage.setItem("name", name);
         email = document.getElementById("email").value;
         email = email.toLowerCase();
-        localStorage.setItem("email", email);
+        localStorage.setItem("email", JSON.stringify(email));
         pass = document.getElementById("pass").value;
         pass = pass.toLowerCase();
-        localStorage.setItem("Password", pass);
+        localStorage.setItem("Password", JSON.stringify(pass));
         male = document.getElementById("male").checked;
         localStorage.setItem("male", male);
         female = document.getElementById("female").checked;
@@ -91,8 +91,12 @@
         }
         else {
             arr.push("Name :" + name, "Email :" + email, "Password :" + pass, "Female :" + female);
+
         }
+        window.location.href = "index.html";
         console.log(arr);
+
+        return false;
     }
 
 </script>
